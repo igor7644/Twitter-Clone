@@ -68,8 +68,8 @@
                                                 </div>
                                             </form>
                                         <div id="comments-{{ $post->id }}">
-                                                <p><a href="" class="usernameComment">{{ $post->user->username }}</a> <span class="comment">komentar ovog korisnika</span></p>
-                                            </div>
+                                                <p><a href="" class="usernameComment">{{ $post->user->username }}</a> <span class="comment"></span></p>
+                                        </div>
                                 </div>
                             </div>
                         </div>
