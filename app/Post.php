@@ -17,4 +17,9 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function numberOfComments()
+    {
+        return $this->comments->where('post_id', $this->id)->count();
+    }
 }
