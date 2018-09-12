@@ -27,7 +27,7 @@ $(document).ready(function(){
                 $('#comments-'+id).html(text);
             }
         });
-    })
+    });
 
     //insert comment
     $('.commentBtn').click(function(e){
@@ -48,15 +48,21 @@ $(document).ready(function(){
             },
             success: function(data){
                 var text = '';
-
+                var number = '';
+                
                 $.each(data, function(index, value){
                     text += `
                     <p><a href="" class="usernameComment">${value['user']['username']}</a> <span class="comment">${value['comment']}</span></p>
                     `;
                 });
+                number += ` <i class="far fa-comment-alt"> &nbsp;${data.length}</i>`;
+                
+                $('.numOfComments-'+id).html(number);
                 $('#comments-'+id).html(text);
+                $('.comment-'+id).val('');
             }
         });
     });
+
 
 });
