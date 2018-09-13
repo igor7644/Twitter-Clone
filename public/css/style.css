@@ -249,3 +249,10 @@
 .modal-header-date {
     padding-bottom: 55px;
 }
+
+.replyDiv {
+    display: none;
+}
+.replyDiv .textarea-reply {
+    width: 100%;
+}

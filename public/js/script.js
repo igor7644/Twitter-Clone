@@ -17,6 +17,14 @@ $(document).ready(function(){
     $('#hiddenContent-'+id).fadeOut();
   });
 
+  $('#thread').on('click', '.replyLink', function(e){
+    e.preventDefault();
+    $('*[id^="reply-"]').hide();
+    var id = $(this).attr('data-id');
+    $('#reply-'+id).fadeIn();
+    $('.textarea-reply').focus();
+  });
+
 });
 
 function blurBtn()

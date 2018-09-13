@@ -21,7 +21,20 @@ $(document).ready(function(){
 
                 $.each(data, function(index, value){
                     text += `
-                    <p><a href="" class="usernameComment">${value['user']['username']}</a> <span class="comment">${value['comment']}</span></p>
+                        <p><a href="" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a> <span class="comment">${value['comment']}</span></p>
+                        <a href="" data-id="${value['id']}" class="replyLink">Reply</a>
+
+                        <div class="replyDiv" id="reply-${value['id']}">
+                            <form action="" method="POST" class="row">
+                                <input type="hidden" name="${value['id']}">
+                                <div class="form-group comment-border-focus col-md-9">
+                                <textarea class="form-control textarea-reply" cols="20" rows="1" placeholder="Reply.." maxlength="250"></textarea>
+                                </div>
+                                <div class="hiddenContent2 col-md-3 ml-auto">
+                                    <button type="submit" class="btn commentBtn">Reply</button>
+                                </div>
+                            </form>
+                        </div>
                     `;
                 });
                 $('#comments-'+id).html(text);
@@ -30,7 +43,7 @@ $(document).ready(function(){
     });
 
     //insert comment
-    $('.commentBtn').click(function(e){
+    $('#thread').on('click', '.commentBtn', function(e){
         e.preventDefault();
 
         var id = $(this).attr('id');
@@ -52,7 +65,10 @@ $(document).ready(function(){
                 
                 $.each(data, function(index, value){
                     text += `
-                    <p><a href="" class="usernameComment">${value['user']['username']}</a> <span class="comment">${value['comment']}</span></p>
+                        <p><a href="" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a> <span class="comment">${value['comment']}</span></p>
+                        <a href="" data-id="${value['id']}">Reply</a>
+                        
+                        
                     `;
                 });
                 number += ` <i class="far fa-comment-alt"> &nbsp;${data.length}</i>`;
