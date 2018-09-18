@@ -2,7 +2,7 @@
 
 <div class="post-{{ $post->id }} modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content" id="thread">
+        <div class="modal-content" id="thread" class="thread">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><p class="post-author"><a href="" class="usernamePost">{{ $post->user->username }}</a></p></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -34,7 +34,7 @@
 
                 </div>
                 <div id="reply">
-
+                    
                 </div>
             </div>
         </div>

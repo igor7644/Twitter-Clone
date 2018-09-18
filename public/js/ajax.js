@@ -1,7 +1,7 @@
 const baseUrl = 'http://localhost/Laravel/SocialBlog/public';
 $(document).ready(function(){
 
-    //show post
+    //show cooments
     $('.showPost').on('click', function(e){
         e.preventDefault();
 
@@ -28,10 +28,10 @@ $(document).ready(function(){
                             <form action="" method="POST" class="row">
                                 <input type="hidden" name="${value['id']}">
                                 <div class="form-group comment-border-focus col-md-9">
-                                <textarea class="form-control textarea-reply" cols="20" rows="1" placeholder="Reply.." maxlength="250"></textarea>
+                                <textarea data-id="" class="comment-${value['id']} form-control textarea-reply comment-${value['id']}" cols="20" rows="1" placeholder="Reply.." maxlength="250"></textarea>
                                 </div>
                                 <div class="hiddenContent2 col-md-3 ml-auto">
-                                    <button type="submit" class="btn commentBtn">Reply</button>
+                                    <button type="submit" class="btn replyBtn commentBtn">Reply</button>
                                 </div>
                             </form>
                         </div>
@@ -43,7 +43,7 @@ $(document).ready(function(){
     });
 
     //insert comment
-    $('#thread').on('click', '.commentBtn', function(e){
+    $('.posts').on('click', '.commentBtn', function(e){
         e.preventDefault();
 
         var id = $(this).attr('id');
@@ -65,10 +65,20 @@ $(document).ready(function(){
                 
                 $.each(data, function(index, value){
                     text += `
-                        <p><a href="" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a> <span class="comment">${value['comment']}</span></p>
-                        <a href="" data-id="${value['id']}">Reply</a>
-                        
-                        
+                    <p><a href="" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a> <span class="comment">${value['comment']}</span></p>
+                    <a href="" data-id="${value['id']}" class="replyLink">Reply</a>
+
+                    <div class="replyDiv" id="reply-${value['id']}">
+                        <form action="" method="POST" class="row">
+                            <input type="hidden" name="${value['id']}">
+                            <div class="form-group comment-border-focus col-md-9">
+                            <textarea data-id="" class="comment-${value['id']} form-control textarea-reply comment-${value['id']}" cols="20" rows="1" placeholder="Reply.." maxlength="250"></textarea>
+                            </div>
+                            <div class="hiddenContent2 col-md-3 ml-auto">
+                                <button type="submit" class="btn replyBtn commentBtn">Reply</button>
+                            </div>
+                        </form>
+                    </div>
                     `;
                 });
                 number += ` <i class="far fa-comment-alt"> &nbsp;${data.length}</i>`;
@@ -79,6 +89,14 @@ $(document).ready(function(){
             }
         });
     });
+
+    //insert reply
+    // $('#thread').on('click', 'replyBtn', function(e){
+    //     e.preventDefault();
+
+    //     var id = $(this).attr('id');
+    //     alert(id);
+    // });
 
 
 });

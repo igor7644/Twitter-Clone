@@ -17,7 +17,7 @@ $(document).ready(function(){
     $('#hiddenContent-'+id).fadeOut();
   });
 
-  $('#thread').on('click', '.replyLink', function(e){
+  $('.posts').on('click', '.replyLink', function(e){
     e.preventDefault();
     $('*[id^="reply-"]').hide();
     var id = $(this).attr('data-id');
