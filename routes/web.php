@@ -14,7 +14,9 @@ Route::get('/user/verify/{token}', 'AuthController@verifyUser');
 Route::get('/home', 'PostController@index');
 Route::post('/home/create', 'PostController@create');
 
+//Comments
 Route::post('/comments/create', 'CommentController@create');
+Route::post('/comments/createReply', 'CommentController@createReply');
 Route::get('/comments', 'CommentController@show');
 
 

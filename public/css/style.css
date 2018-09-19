@@ -188,12 +188,33 @@
     background-color: #208fb1;
     box-shadow: none;
 }
+.replyBtn{
+    background: #40B8DD;
+    color: white;
+    width: 110px;
+    border-radius: 4px;
+}
+.replyBtn:hover, .postBtn:active{
+    color: white;
+    background-color: #208fb1;
+    box-shadow: none;
+}
+.replyComment{
+    margin-left: 50px;
+    font-size: 14px;
+}
 .posts:hover{
     background-color: #f3f9fd;
 }
 .comment{
     font-size: .9em;
-    background-color: #E9EBEE;
+    background-color: #f4f9fd;
+    border-radius: 5px;
+    padding: 3px;
+}
+.userAndComment{
+    background-color: #F3F9FD;
+    padding: 2px;
 }
 .usernamePost{
     font-weight: 600;
@@ -202,7 +223,7 @@
 }
 .usernameComment{
     color: black;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 .usernamePost:hover{
     color:#40B8DD;

@@ -21,21 +21,28 @@ $(document).ready(function(){
 
                 $.each(data, function(index, value){
                     text += `
-                        <p><a href="" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a> <span class="comment">${value['comment']}</span></p>
-                        <a href="" data-id="${value['id']}" class="replyLink">Reply</a>
-
-                        <div class="replyDiv" id="reply-${value['id']}">
-                            <form action="" method="POST" class="row">
-                                <input type="hidden" name="${value['id']}">
-                                <div class="form-group comment-border-focus col-md-9">
-                                <textarea data-id="" class="comment-${value['id']} form-control textarea-reply comment-${value['id']}" cols="20" rows="1" placeholder="Reply.." maxlength="250"></textarea>
-                                </div>
-                                <div class="hiddenContent2 col-md-3 ml-auto">
-                                    <button type="submit" class="btn replyBtn commentBtn">Reply</button>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="userAndComment">
+                        <p><a href="" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a> <span>${value['comment']}</span></p>
+                    </div>
+                    <a href="" class="replyLink" data-id="${value['id']}" data-postId="${value['post']['id']}">Reply</a>
+                
+                    <div class="replyDiv" id="reply-${value['id']}">
+                        <form action="" method="POST" class="row">
+                            <input type="hidden" name="${value['id']}">
+                            <div class="form-group comment-border-focus col-md-9">
+                            <textarea class="comment-${value['id']} form-control textarea-reply" cols="20" rows="1" placeholder="Reply.." maxlength="250"></textarea>
+                            </div>
+                            <div class="hiddenContent2 col-md-3 ml-auto">
+                                <button type="submit" class="btn replyBtn">Reply</button>
+                            </div>
+                        </form>
+                    </div>
                     `;
+                    $.each(value['replies'], function(key, val){
+                        text+=`
+                            <p class="replyComment"><a href="" data-id="${value['id']}" class="usernameComment">${val['user']['username']}</a> <span class="comment">${val['comment']}</span></p>
+                        `;
+                    });
                 });
                 $('#comments-'+id).html(text);
             }
@@ -62,28 +69,35 @@ $(document).ready(function(){
             success: function(data){
                 var text = '';
                 var number = '';
-                
+                console.log(data);
                 $.each(data, function(index, value){
                     text += `
-                    <p><a href="" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a> <span class="comment">${value['comment']}</span></p>
-                    <a href="" data-id="${value['id']}" class="replyLink">Reply</a>
+                    <div class="userAndComment">
+                        <p><a href="" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a> <span>${value['comment']}</span></p>
+                    </div>
+                    <a href="" class="replyLink" data-id="${value['id']}" data-postId="${value['post']['id']}">Reply</a>
 
                     <div class="replyDiv" id="reply-${value['id']}">
                         <form action="" method="POST" class="row">
-                            <input type="hidden" name="${value['id']}">
+                            <input type="hidden" id="postid" value="${value['id']}" name="${value['id']}">
                             <div class="form-group comment-border-focus col-md-9">
-                            <textarea data-id="" class="comment-${value['id']} form-control textarea-reply comment-${value['id']}" cols="20" rows="1" placeholder="Reply.." maxlength="250"></textarea>
+                            <textarea class="comment-${value['id']} form-control textarea-reply" cols="20" rows="1" placeholder="Reply.." maxlength="250"></textarea>
                             </div>
                             <div class="hiddenContent2 col-md-3 ml-auto">
-                                <button type="submit" class="btn replyBtn commentBtn">Reply</button>
+                                <button type="submit" class="btn replyBtn">Reply</button>
                             </div>
                         </form>
                     </div>
                     `;
+                    $.each(value['replies'], function(key, val){
+                        text+=`
+                            <p class="replyComment"><a href="" data-id="${val['id']}" class="usernameComment">${val['user']['username']}</a> <span class="comment">${val['comment']}</span></p>
+                        `;
+                    });
                 });
-                number += ` <i class="far fa-comment-alt"> &nbsp;${data.length}</i>`;
+                // number += ` <i class="far fa-comment-alt"> &nbsp;${data.length}</i>`;
                 
-                $('.numOfComments-'+id).html(number);
+                // $('.numOfComments-'+id).html(number);
                 $('#comments-'+id).html(text);
                 $('.comment-'+id).val('');
             }
@@ -91,12 +105,70 @@ $(document).ready(function(){
     });
 
     //insert reply
-    // $('#thread').on('click', 'replyBtn', function(e){
-    //     e.preventDefault();
+    $('.posts').on('click', '.replyLink', function(e){
+        e.preventDefault();
 
-    //     var id = $(this).attr('id');
-    //     alert(id);
-    // });
+        $('*[id^="reply-"]').hide();
+        var commentId = $(this).attr('data-id');
+        $('#reply-'+commentId).fadeIn();
+        $('.textarea-reply').focus();
+
+        var postId = $(this).attr('data-postId');
+        
+        $('.replyBtn').on('click', function(e){
+            e.preventDefault();
+
+            var reply = $('.comment-'+commentId).val();
+            
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method: 'POST',
+                url: baseUrl + '/comments/createReply',
+                data: {
+                    commentId,
+                    postId,
+                    reply
+                },
+                success: function(data){
+                    console.log(data);
+                    $('.comment-'+commentId).val('');
+                    $('*[id^="reply-"]').hide();
+                    var text = '';
+
+                    $.each(data, function(key, value){
+                        text += `
+                        <div class="userAndComment">
+                            <p><a href="" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a> <span>${value['comment']}</span></p>
+                        </div>
+                        <a href="" class="replyLink" data-id="${value['id']}" data-postId="${value['post']['id']}">Reply</a>
+                        
+                        <div class="replyDiv" id="reply-${value['id']}">
+                        <form action="" method="POST" class="row">
+                            <input type="hidden" id="postid" value="${value['id']}" name="${value['id']}">
+                            <div class="form-group comment-border-focus col-md-9">
+                            <textarea class="comment-${value['id']} form-control textarea-reply" cols="20" rows="1" placeholder="Reply.." maxlength="250"></textarea>
+                            </div>
+                            <div class="hiddenContent2 col-md-3 ml-auto">
+                                <button type="submit" class="btn replyBtn">Reply</button>
+                        </div>
+                        </form>
+                    </div>
+                        `;
+                        $.each(value['replies'], function(key, val){
+                            text+=`
+                                <p class="replyComment"><a href="" data-id="${value['id']}" class="usernameComment">${val['user']['username']}</a> <span class="comment">${val['comment']}</span></p>
+                            `;
+                        });
+                    });
+
+                    $('#comments-'+postId).html(text);
+                }
+            });
+
+        });
+      });
 
 
 });

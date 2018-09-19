@@ -17,13 +17,7 @@ $(document).ready(function(){
     $('#hiddenContent-'+id).fadeOut();
   });
 
-  $('.posts').on('click', '.replyLink', function(e){
-    e.preventDefault();
-    $('*[id^="reply-"]').hide();
-    var id = $(this).attr('data-id');
-    $('#reply-'+id).fadeIn();
-    $('.textarea-reply').focus();
-  });
+  
 
 });
 

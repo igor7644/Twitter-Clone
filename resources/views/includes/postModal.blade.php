@@ -22,7 +22,7 @@
                 </div>
                 
                 <form action="" method="POST" class="row">
-                    <input type="hidden" value="{{ $post->id }}">
+                    <input type="hidden" class="postid" value="{{ $post->id }}">
                     <div class="form-group comment-border-focus col-md-9">
                     <textarea class="form-control textarea-comment comment-{{ $post->id }}" id="textarea-comment" cols="40" rows="1" placeholder="Write comment.." maxlength="250" data-id="{{ $post->id }}"></textarea>
                     </div>
@@ -30,10 +30,10 @@
                         <button type="submit" class="btn commentBtn" id="{{ $post->id }}">Comment</button>
                     </div>
                 </form>
-                <div id="comments-{{ $post->id }}">
+                <div id="comments-{{ $post->id }}" class="comments">
 
                 </div>
-                <div id="reply">
+                <div id="reply-{{ $post->id }}">
                     
                 </div>
             </div>
