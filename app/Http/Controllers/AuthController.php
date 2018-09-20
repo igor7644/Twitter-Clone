@@ -13,6 +13,16 @@ use App\Mail\VerifyMail;
 
 class AuthController extends Controller
 {
+    public function index()
+    {
+        return view('pages.welcome');
+    }
+
+    public function getSignUp()
+    {
+        return view('pages.signup');
+    }
+
     public function signUp(SignupValidation $request)
     {
         $user = User::create([

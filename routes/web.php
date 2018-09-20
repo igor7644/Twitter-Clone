@@ -1,16 +1,16 @@
 <?php
 
-Route::get('/welcome', 'PagesController@getIndex');
-
 //Auth
+Route::get('/welcome', 'AuthController@index');
 Route::post('/signin', 'AuthController@signIn')->name('signIn');
 Route::get('/logout', 'AuthController@logOut')->name('logOut');
 
 //Registration
-Route::get('/signup', 'PagesController@getSignUp')->name('signUp');
+Route::get('/signup', 'AuthController@getSignUp')->name('signUp');
 Route::post('/signup', 'AuthController@signUp')->name('storeUser');
 Route::get('/user/verify/{token}', 'AuthController@verifyUser');
 
+//Posts
 Route::get('/home', 'PostController@index');
 Route::post('/home/create', 'PostController@create');
 
