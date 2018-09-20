@@ -68,8 +68,13 @@ $(document).ready(function(){
             },
             success: function(data){
                 var text = '';
-                var number = '';
-                console.log(data);
+                var childCom = 0;
+                var parentCom = data.length;
+                $.each(data, function(index, value){
+                    childCom += value['replies'].length;
+                });
+                var sum = childCom + parentCom;
+                
                 $.each(data, function(index, value){
                     text += `
                     <div class="userAndComment">
@@ -95,9 +100,9 @@ $(document).ready(function(){
                         `;
                     });
                 });
-                // number += ` <i class="far fa-comment-alt"> &nbsp;${data.length}</i>`;
+                var number = ` <i class="far fa-comment-alt"> &nbsp;${sum}</i>`;
                 
-                // $('.numOfComments-'+id).html(number);
+                $('.numOfComments-'+id).html(number);
                 $('#comments-'+id).html(text);
                 $('.comment-'+id).val('');
             }
@@ -132,10 +137,15 @@ $(document).ready(function(){
                     reply
                 },
                 success: function(data){
-                    console.log(data);
                     $('.comment-'+commentId).val('');
                     $('*[id^="reply-"]').hide();
                     var text = '';
+                    var childCom = 0;
+                    var parentCom = data.length;
+                    $.each(data, function(index, value){
+                        childCom += value['replies'].length;
+                    });
+                    var sum = childCom + parentCom;
 
                     $.each(data, function(key, value){
                         text += `
@@ -152,7 +162,7 @@ $(document).ready(function(){
                             </div>
                             <div class="hiddenContent2 col-md-3 ml-auto">
                                 <button type="submit" class="btn replyBtn">Reply</button>
-                        </div>
+                            </div>
                         </form>
                     </div>
                         `;
@@ -162,7 +172,9 @@ $(document).ready(function(){
                             `;
                         });
                     });
-
+                    var number = ` <i class="far fa-comment-alt"> &nbsp;${sum}</i>`;
+                
+                    $('.numOfComments-'+postId).html(number);
                     $('#comments-'+postId).html(text);
                 }
             });
