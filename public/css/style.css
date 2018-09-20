@@ -257,6 +257,7 @@
 }
 .fa-comment-alt:hover{
     color: #40B8DD;
+    cursor: pointer;
 }
 .fa-heart{
     font-size: 14px;
