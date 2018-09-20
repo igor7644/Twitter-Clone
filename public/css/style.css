@@ -261,8 +261,15 @@
 .fa-heart{
     font-size: 14px;
 }
-.fa-heart:hover{
+.like:hover{
     color: #E0245E;
+    cursor: pointer;
+}
+.unlike{
+    color: #E0245E;
+}
+.unlike:hover{
+    cursor: pointer;
 }
 .modal-header {
     padding: 15px;

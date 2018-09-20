@@ -20,6 +20,16 @@ class Post extends Model
 
     public function numberOfComments()
     {
-        return $this->comments->where('post_id', $this->id)->count();
+        return $this->comments->count();
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes');
+    }
+
+    public function numberOfLikes()
+    {
+        return $this->likes->count();
     }
 }

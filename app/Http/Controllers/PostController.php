@@ -27,4 +27,20 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+
+    public function like()
+    {
+        Auth::user()->likes()->attach(request('postId'));
+        $post = Post::find(request('postId'));
+        return $post->likes->count(); 
+    }
+
+    public function unlike()
+    {
+        Auth::user()->likes()->detach(request('postId'));
+        $post = Post::find(request('postId'));
+        return $post->likes->count(); 
+    }
+
+
 }

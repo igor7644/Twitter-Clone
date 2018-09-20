@@ -11,10 +11,14 @@
                 </div>
                 <div class="modal-body">
                 <p class="text">{{ $post->text }}</p>
-                <div class="row modal-numberOf"><p class="date"><span class="hours"> {{ $post->created_at->format('H:i - j M Y') }} </span> 
+                <div class="row modal-numberOf numberOf"><p class="date"><span class="hours"> {{ $post->created_at->format('H:i - j M Y') }} </span> 
                     &nbsp; &nbsp; &nbsp; &nbsp; 
                     <div class="numOfLikes-{{ $post->id }}">
-                        <i class="far fa-heart"> &nbsp;4</i> &nbsp; &nbsp;
+                        @if(auth()->user()->likes->contains($post->id))
+                            <i class="fas fa-heart unlike" data-id="{{ $post->id }}"> &nbsp;{{ $post->numberOfLikes() }}</i> &nbsp; &nbsp;
+                        @else 
+                            <i class="far fa-heart like" data-id="{{ $post->id }}"> &nbsp;{{ $post->numberOfLikes() }}</i> &nbsp; &nbsp;
+                        @endif
                     </div>
                     <div class="numOfComments-{{ $post->id }}">
                         <i class="far fa-comment-alt"> &nbsp;{{ $post->numberOfComments() }}</i>

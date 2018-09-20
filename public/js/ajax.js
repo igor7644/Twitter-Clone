@@ -182,5 +182,49 @@ $(document).ready(function(){
         });
       });
 
+      //like
+      $('.numberOf').on('click', '.like', function(){
+
+        var postId = $(this).attr('data-id');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'POST',
+            url: baseUrl + '/likes/create',
+            data: {
+                postId
+            },
+            success: function(data){
+                var text = `<i class="fas fa-heart unlike" data-id="${postId}"> &nbsp;${data}</i> &nbsp; &nbsp;`;
+                $('.numOfLikes-'+postId).html(text);
+            }
+        });
+      });
+
+      //unlike
+      $('.numberOf').on('click', '.unlike', function(){
+
+        var postId = $(this).attr('data-id');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'POST',
+            url: baseUrl + '/likes/destroy',
+            data: {
+                postId
+            },
+            success: function(data){
+                var text = `<i class="far fa-heart like" data-id="${postId}"> &nbsp;${data}</i> &nbsp; &nbsp;`;
+                $('.numOfLikes-'+postId).html(text);
+            }
+        });
+      });
+
+      
+
 
 });
