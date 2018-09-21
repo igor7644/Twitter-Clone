@@ -42,5 +42,11 @@ class PostController extends Controller
         return $post->likes->count(); 
     }
 
+    public function destroy($id)
+    {
+        Post::destroy($id);
+        return redirect()->back();
+    }
+
 
 }

@@ -12,7 +12,8 @@ Route::get('/user/verify/{token}', 'AuthController@verifyUser');
 
 //Posts
 Route::get('/home', 'PostController@index');
-Route::post('/home/create', 'PostController@create');
+Route::post('/posts/create', 'PostController@create')->name('createPost');
+Route::delete('/posts/{id}', 'PostController@destroy');
 
 //Comments and Likes
 Route::post('/comments/create', 'CommentController@create');

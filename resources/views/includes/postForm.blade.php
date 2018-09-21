@@ -1,6 +1,6 @@
 <div class="row main-insert">
     <div class="col-md-7 mr-auto main-insert-blue">
-        <form action="{{ asset('/home/create') }}" method="POST">
+        <form action="{{ route('createPost') }}" method="POST">
             @csrf
             <div class="form-group blue-border-focus">
                 <textarea class="form-control textarea-insert" id="textarea-insert" name="postText" onkeyup="countChar(this)" onfocus="expand()" cols="40" rows="1" placeholder="What's happening?" maxlength="250"></textarea>

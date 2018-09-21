@@ -6,7 +6,11 @@
                     <a class="dropdown-toggle fas fa-angle-down delete-dropdown"  data-toggle="dropdown"></a>
                     <span class="caret"></span>
                     <div class="dropdown-menu delete-dd-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> &nbsp; Delete Post</a>
+                        <form action="{{ asset('/posts/'.$post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="submit dropdown-item deletePost" href=""><i class="far fa-trash-alt"></i> &nbsp; Delete Post</button>
+                        </form>
                     </div>
                   </div>
                 {{-- <a class="ml-auto" href="">Delete</a> --}}
