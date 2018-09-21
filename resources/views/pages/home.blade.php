@@ -8,9 +8,9 @@
         </div>
         <div class="col-md-2 ml-auto">
             <div class="ddBtn">
-                <button class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->username }} </button>
+                <button class="btn btn-primary dropdown-toggle profile-dd" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->username }} </button>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <div class="dropdown-menu profile-dd-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="#"><i class="fas fa-user"></i> &nbsp; Profile</a>
                     <a class="dropdown-item" href="{{ route('logOut') }}"><i class="fas fa-sign-out-alt"></i> &nbsp; Log out</a>
                 </div>
@@ -27,7 +27,7 @@
             @foreach ($posts as $post)
                 @include('includes.post')
             @endforeach
-
+            
             <div class="col-md-4 sidebar2">
                 <h3>sidebar 2</h3>
             </div>

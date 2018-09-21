@@ -71,20 +71,20 @@
 }
 
 /** Home page */
-.dropdown-toggle{
+.profile-dd{
     background: none;
     color: #40B8DD;
     width: 150px;
     border: 1px solid #40B8DD;
     border-radius: 20px;
 }
-.dropdown-toggle:hover, .dropdown-toggle:active{
+.profile-dd:hover, .profile-dd:active{
     color: white;
     background-color: #40B8DD;
     border: 1px solid #40B8DD;
     box-shadow: none;
 }
-.dropdown-menu{
+.profile-dd-menu{
     margin-top: 5.8px;
     border-left: solid #40B8DD;
     border-right:  solid #40B8DD;
@@ -159,6 +159,9 @@
 .posts{
     background-color: white;
     padding-top: 20px;
+}
+.insidePost{
+    padding: 15px;
 }
 .post-author{
     font-weight: bold;
@@ -284,4 +287,16 @@
 }
 .replyDiv .textarea-reply {
     width: 100%;
+}
+.delete-dropdown::after {
+    display:none;
+}
+.delete-dd-menu{
+    margin-top: 6px;
+    width: 170px;
+    border: 1px solid #40B8DD;
+    border-radius: 5px;
+}
+.delete-dd{
+    cursor: pointer;
 }

@@ -1,5 +1,17 @@
 <div class="col-md-7 mr-auto posts">
-    <p class="post-author"><a href="" class="usernamePost">{{ $post->user->username }}</a><span class="hours"> &nbsp {{ Carbon\Carbon::parse($post->created_at)->diffForHumans()}} </span></p>
+    <div class="row insidePost">
+            <p class="post-author"><a href="" class="usernamePost">{{ $post->user->username }}</a><span class="hours"> &nbsp {{ Carbon\Carbon::parse($post->created_at)->diffForHumans()}} </span></p>
+            @if(auth()->user()->id == $post->user->id)
+            <div class="dropdown ml-auto delete-dd">
+                    <a class="dropdown-toggle fas fa-angle-down delete-dropdown"  data-toggle="dropdown"></a>
+                    <span class="caret"></span>
+                    <div class="dropdown-menu delete-dd-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> &nbsp; Delete Post</a>
+                    </div>
+                  </div>
+                {{-- <a class="ml-auto" href="">Delete</a> --}}
+            @endif
+    </div>
     <p class="text">{{ $post->text }}</p>
     <div class="row numberOf">
         <div class="numOfLikes-{{ $post->id }}">
