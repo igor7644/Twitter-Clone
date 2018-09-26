@@ -10,6 +10,9 @@ Route::get('/signup', 'AuthController@getSignUp')->name('signUp');
 Route::post('/signup', 'AuthController@signUp')->name('storeUser');
 Route::get('/user/verify/{token}', 'AuthController@verifyUser');
 
+//Users
+Route::get('/user/{id}', 'UserController@show');
+
 //Posts
 Route::get('/home', 'PostController@index');
 Route::post('/posts/create', 'PostController@create')->name('createPost');
