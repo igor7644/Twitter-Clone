@@ -217,7 +217,7 @@
 }
 .userAndComment{
     background-color: #F3F9FD;
-    padding: 2px;
+    padding: 8px;
 }
 .usernamePost{
     font-weight: 600;
@@ -225,14 +225,14 @@
     font-size: 1.2em;
 }
 .usernameComment{
-    color: black;
+    color: #40B8DD;
     font-size: 1.1em;
 }
 .usernamePost:hover{
     color:#40B8DD;
 }
 .usernameComment:hover{
-    color:#40B8DD;
+    color: #208fb1;
 }
 .showPost{
     background: none;
@@ -287,6 +287,14 @@
 }
 .replyDiv .textarea-reply {
     width: 100%;
+}
+.replyLink{
+    color: black;
+    font-size: 15px;
+}
+.replyLink:hover{
+    color: #40B8DD;
+    text-decoration: none;
 }
 .delete-dropdown::after {
     display:none;
