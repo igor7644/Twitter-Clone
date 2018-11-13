@@ -308,3 +308,27 @@
 .delete-dd{
     cursor: pointer;
 }
+
+/* profile */
+.profile-info{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.profile{
+    background-color: white;
+}
+.editProfile{
+    background: none;
+    color: #40B8DD;
+    width: 150px;
+    height: 38px;
+    border: .5px solid #40B8DD;
+    border-radius: 4px;
+}
+.editProfile:hover, .editProfile:active{
+    color: white;
+    background-color: #40B8DD;
+    border: .5px solid #40B8DD;
+    box-shadow: none;
+}
