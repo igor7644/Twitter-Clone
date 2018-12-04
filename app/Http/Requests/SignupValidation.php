@@ -26,8 +26,8 @@ class SignupValidation extends FormRequest
         return [
             'name' => 'required',
             'lastName' => 'required',
-            'email' => 'required',
-            'username' => 'required',
+            'email' => 'required|unique:users',
+            'username' => 'required|unique:users',
             'password' => 'required|confirmed'
         ];
     }
@@ -38,7 +38,9 @@ class SignupValidation extends FormRequest
             'name.required' => 'Name is required!',
             'lastName.required' => 'Last name is required!',
             'email.required' => 'Email is required!',
+            'email.unique' => 'Email has already been taken!',
             'username.required' => 'Username is required!',
+            'username.unique' => 'Username has already been taken!',
             'password.required' => 'Password is required!'
         ];
     }
