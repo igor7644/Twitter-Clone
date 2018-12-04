@@ -18,22 +18,22 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Last Name</label>
-                            <input type="text" class="form-control" name="lastName">
+                            <input type="text" class="form-control" id="lastname" name="lastName">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email">
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Username</label>
-                            <input type="text" class="form-control" name="username">
+                            <input type="text" class="form-control" id="usernameForm" name="username">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" name="password">
+                        <input type="password" class="form-control" id="password" name="password">
                     </div>
                     <div class="form-group">
                         <label>Confirm Password</label>
@@ -41,11 +41,13 @@
                     </div>
                     <button type="submit" class="btn signupBtn">Sign up</button>
                 </form><br>
+
                 @if (count($errors) > 0)
-                            @foreach ($errors->all() as $error)
-                                <p class="alert alert-danger">{{ $error }}</p>
-                            @endforeach
-                        @endif
+                    @foreach ($errors->all() as $error)
+                        <p class="alert alert-danger">{{ $error }}</p>
+                    @endforeach
+                @endif
+
             </div>
         </div>
     </div>
