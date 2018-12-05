@@ -15,4 +15,9 @@ class UserController extends Controller
         $data['user'] = User::find($id);
         return view('pages.profile', $data);
     }
+
+    public function showUpdate()
+    {
+        return User::where(['id' => request('id')])->get();
+    }
 }

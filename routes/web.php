@@ -12,6 +12,7 @@ Route::get('/user/verify/{token}', 'AuthController@verifyUser');
 
 //Users
 Route::get('/user/{id}', 'UserController@show');
+Route::get('/user/{id}/show', 'UserController@showUpdate');
 
 //Posts
 Route::get('/home', 'PostController@index');

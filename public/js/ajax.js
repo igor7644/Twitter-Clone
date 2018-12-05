@@ -224,7 +224,50 @@ $(document).ready(function(){
         });
       });
 
-      
+      //fillProfile
+      $('.editProfile').on('click', function(e){
+          e.preventDefault();
+
+          var id = $(this).val();
+          
+          $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'GET',
+            url: baseUrl + '/user/'+id+'/show',
+            data: {
+                id
+            },
+            success: function(data){
+                
+                var text = '';
+
+                $.each(data, function(index, value){
+                    text += `
+                        <form>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" id="" value="${value['name']}">
+                            </div>
+                            <div class="form-group">
+                               <label>Last Name</label>
+                                <input type="text" class="form-control" id="" value="${value['last_name']}">
+                            </div>
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" id="" value="${value['username']}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </form>
+                    `;
+                });
+
+                $('.profileEdit').html(text);
+            }
+          });
+          
+      });
 
 
 });
