@@ -20,4 +20,15 @@ class UserController extends Controller
     {
         return User::where(['id' => request('id')])->get();
     }
+
+    public function edit()
+    {
+        $user = User::find(request('id'));
+        $user->name = request('name');
+        $user->last_name = request('lastName');
+        $user->username = request('username');
+        $user->save();
+
+        return User::find(request('id'));
+    }
 }

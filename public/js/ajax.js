@@ -245,25 +245,76 @@ $(document).ready(function(){
 
                 $.each(data, function(index, value){
                     text += `
+                        <div class="alertMessage">
+                        </div>
                         <form>
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" class="form-control" id="" value="${value['name']}">
+                                <input type="text" class="form-control" id="name" value="${value['name']}">
                             </div>
                             <div class="form-group">
                                <label>Last Name</label>
-                                <input type="text" class="form-control" id="" value="${value['last_name']}">
+                                <input type="text" class="form-control" id="lastName" value="${value['last_name']}">
                             </div>
                             <div class="form-group">
                                 <label>Username</label>
-                                <input type="text" class="form-control" id="" value="${value['username']}">
+                                <input type="text" class="form-control" id="username" value="${value['username']}">
+                                <input type="hidden" class="userId" data-id="${value['id']}">
                             </div>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary updateProfile">Save changes</button>
                         </form>
                     `;
                 });
 
                 $('.profileEdit').html(text);
+            }
+          });
+      });
+
+      //update profile
+      $('.modal-content').on('click', '.updateProfile', function(e){
+          e.preventDefault();
+          
+          var id = $('.userId').data('id');
+          var name = $('#name').val();
+          var lastName = $('#lastName').val();
+          var username = $('#username').val();
+          
+          $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'POST',
+            url: baseUrl + '/user/' + id + '/edit',
+            data: {
+                id,
+                name,
+                lastName,
+                username
+            },
+            success: function(data){
+                
+                var text = `
+                    <p><b>${data['name']} ${data['last_name']}</b></p>
+                    <p>${data['username']}</p>
+                `;
+                // var text2 = `
+                //     <button class="btn btn-primary dropdown-toggle profile-dd" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> ${data['username']} </button>
+
+                //     <div class="dropdown-menu profile-dd-menu" aria-labelledby="dropdownMenuLink">
+                //         <a class="dropdown-item" href="{{ asset('/user/'.auth()->user()->id) }}"><i class="fas fa-user"></i> &nbsp; Profile</a>
+                //         <a class="dropdown-item" href="{{ route('logOut') }}"><i class="fas fa-sign-out-alt"></i> &nbsp; Log out</a>
+                //     </div>
+                // `;
+                var text3 = `
+                    <div class="alert alert-success" role="alert">
+                        Profile updated!
+                    </div>
+                `;
+
+                $('.pofileAjax').html(text);
+                // $('.usernameAjax').html(text2);
+                $('.alertMessage').html(text3);
             }
           });
           

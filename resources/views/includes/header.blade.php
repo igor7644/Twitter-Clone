@@ -3,7 +3,7 @@
         <p><a href="{{ asset('/home') }}"><i class="fas fa-home"></i> Home</a></p>
     </div>
     <div class="col-md-2 ml-auto">
-        <div class="ddBtn">
+        <div class="ddBtn usernameAjax">
             <button class="btn btn-primary dropdown-toggle profile-dd" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->username }} </button>
 
             <div class="dropdown-menu profile-dd-menu" aria-labelledby="dropdownMenuLink">

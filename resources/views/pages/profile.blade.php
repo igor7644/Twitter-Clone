@@ -7,8 +7,10 @@
     <div class="container-fluid" style="background-color:#E6ECF0">
         <div class="row profile">
             <div class="col-md-12 profile-info">
-                <p><b>{{ $user->name }} {{ $user->last_name }}</b></p>
-                <p>{{ $user->username }}</p>
+                <div class="pofileAjax">
+                    <p><b>{{ $user->name }} {{ $user->last_name }}</b></p>
+                    <p>{{ $user->username }}</p>
+                </div>
                 <p>Joined {{ $user->created_at->format('F Y') }}</p>
 
                 @if (auth()->user()->id == $user->id)
@@ -25,6 +27,9 @@
                           </button>
                         </div>
                         <div class="modal-body profileEdit">
+                            <div class="alertMessage">
+
+                            </div>
                             <form>
                                 <div class="form-group">
                                   <label>Name</label>
@@ -37,8 +42,9 @@
                                 <div class="form-group">
                                   <label>Username</label>
                                   <input type="text" class="form-control" id="" placeholder="">
+                                  <input type="hidden" data-id="{{ $user->id }}">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <button type="submit" class="btn btn-primary updateProfile">Save changes</button>
                             </form>
                         </div>
                       </div>
