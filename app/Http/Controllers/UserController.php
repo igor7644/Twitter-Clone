@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\EditProfileValidation;
 use App\Post;
 use App\User;
 
@@ -21,7 +22,7 @@ class UserController extends Controller
         return User::where(['id' => request('id')])->get();
     }
 
-    public function edit()
+    public function edit(EditProfileValidation $request)
     {
         $user = User::find(request('id'));
         $user->name = request('name');

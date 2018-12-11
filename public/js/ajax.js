@@ -313,9 +313,21 @@ $(document).ready(function(){
                 $('.pofileAjax').html(text);
                 $('.usernameAjax').html(text2);
                 $('.alertMessage').html(text3);
+            },
+            error: function(data){
+                var errors = data.responseJSON.errors;
+                var text4 = '';
+                $.each(errors, function(index, value){
+                    text4 += `
+                        <div class="alert alert-danger" role="alert">
+                            ${value[0]}
+                        </div>
+                    `;
+                });
+
+                $('.alertMessage').html(text4);
             }
           });
-          
       });
 
 
