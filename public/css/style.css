@@ -332,3 +332,17 @@
     border: .5px solid #40B8DD;
     box-shadow: none;
 }
+.updateProfile{
+    background: none;
+    color: #40B8DD;
+    width: 150px;
+    height: 38px;
+    border: .5px solid #40B8DD;
+    border-radius: 4px;
+}
+.updateProfile:hover, .updateProfile:active{
+    color: white;
+    background-color: #40B8DD;
+    border: .5px solid #40B8DD;
+    box-shadow: none;
+}
