@@ -3,5 +3,8 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/ajax.js') }}"></script>
+    <script type="text/javascript">
+        var BASE_URL = {!! json_encode(url('/')) !!}
+    </script>
 </body>
 </html>

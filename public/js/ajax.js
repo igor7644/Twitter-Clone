@@ -1,4 +1,3 @@
-const baseUrl = 'http://localhost/Laravel/SocialBlog/public';
 $(document).ready(function(){
 
     //show cooments
@@ -12,7 +11,7 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             method: 'GET',
-            url: baseUrl + '/comments',
+            url: BASE_URL + '/comments',
             data: {
                 id
             },
@@ -61,7 +60,7 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             method: 'POST',
-            url: baseUrl + '/comments/create',
+            url: BASE_URL + '/comments/create',
             data: {
                 id,
                 comment
@@ -130,7 +129,7 @@ $(document).ready(function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 method: 'POST',
-                url: baseUrl + '/comments/createReply',
+                url: BASE_URL + '/comments/createReply',
                 data: {
                     commentId,
                     postId,
@@ -192,7 +191,7 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             method: 'POST',
-            url: baseUrl + '/likes/create',
+            url: BASE_URL + '/likes/create',
             data: {
                 postId
             },
@@ -213,7 +212,7 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             method: 'POST',
-            url: baseUrl + '/likes/destroy',
+            url: BASE_URL + '/likes/destroy',
             data: {
                 postId
             },
@@ -235,7 +234,7 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             method: 'GET',
-            url: baseUrl + '/user/'+id+'/show',
+            url: BASE_URL + '/user/'+id+'/show',
             data: {
                 id
             },
@@ -285,7 +284,7 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             method: 'POST',
-            url: baseUrl + '/user/' + id + '/edit',
+            url: BASE_URL + '/user/' + id + '/edit',
             data: {
                 id,
                 name,
@@ -298,22 +297,21 @@ $(document).ready(function(){
                     <p><b>${data['name']} ${data['last_name']}</b></p>
                     <p>${data['username']}</p>
                 `;
-                // var text2 = `
-                //     <button class="btn btn-primary dropdown-toggle profile-dd" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> ${data['username']} </button>
+                var text2 = `
+                    <button class="btn btn-primary dropdown-toggle profile-dd" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> ${data['username']} </button>
 
-                //     <div class="dropdown-menu profile-dd-menu" aria-labelledby="dropdownMenuLink">
-                //         <a class="dropdown-item" href="{{ asset('/user/'.auth()->user()->id) }}"><i class="fas fa-user"></i> &nbsp; Profile</a>
-                //         <a class="dropdown-item" href="{{ route('logOut') }}"><i class="fas fa-sign-out-alt"></i> &nbsp; Log out</a>
-                //     </div>
-                // `;
+                    <div class="dropdown-menu profile-dd-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="`+ BASE_URL + `/user/${data['id']}"><i class="fas fa-user"></i> &nbsp; Profile</a>
+                        <a class="dropdown-item" href="`+ BASE_URL +`/logout"><i class="fas fa-sign-out-alt"></i> &nbsp; Log out</a>
+                    </div>
+                `;
                 var text3 = `
                     <div class="alert alert-success" role="alert">
                         Profile updated!
                     </div>
                 `;
-
                 $('.pofileAjax').html(text);
-                // $('.usernameAjax').html(text2);
+                $('.usernameAjax').html(text2);
                 $('.alertMessage').html(text3);
             }
           });
