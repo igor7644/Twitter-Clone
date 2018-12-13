@@ -1,12 +1,19 @@
-$(document).ready(function(){
-
+window.addEventListener('load', function()
+{
   document.getElementById('hiddenContent').style.display = 'none';
+});
 
+window.addEventListener('load', function()
+{
   var buttons = document.getElementsByClassName('hiddenContent2');
   for(var i=0; i<buttons.length; i++)
   {
     buttons[i].style.display = 'none';
   }
+});
+
+
+$(document).ready(function(){
 
   $('.textarea-comment').on('focus', function(){
     var id = $(this).attr("data-id");
@@ -16,8 +23,6 @@ $(document).ready(function(){
     var id = $(this).attr("data-id");
     $('#hiddenContent-'+id).fadeOut();
   });
-
-  
 
 });
 
