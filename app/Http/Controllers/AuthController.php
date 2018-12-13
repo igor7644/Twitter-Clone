@@ -25,19 +25,21 @@ class AuthController extends Controller
 
     public function signUp(SignupValidation $request)
     {
-        $user = User::create([
-            'name' => request('name'),
-            'last_name' => request('lastName'),
-            'email' => request('email'),
-            'username' => request('username'),
-            'password' => bcrypt(request('password')),
-            'role_id' => 2
-        ]);
-
-        VerifyUser::create([
-            'token' => str_random(40),
-            'user_id' => $user->id
-        ]);
+        DB::transaction(function () {
+            $user = User::create([
+                'name' => request('name'),
+                'last_name' => request('lastName'),
+                'email' => request('email'),
+                'username' => request('username'),
+                'password' => bcrypt(request('password')),
+                'role_id' => 2
+            ]);
+    
+            VerifyUser::create([
+                'token' => str_random(40),
+                'user_id' => $user->id
+            ]);
+        });
 
         Mail::to($user->email)->send(new VerifyMail($user));
         return redirect('/welcome')->with('message', 'We sent you an activation code. Check your email and click on the link to verify.');
