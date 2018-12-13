@@ -73,6 +73,13 @@
                 </table>
             </div>
         </div>
+        <div class="row profilePosts" style="background-color: white">
+            <div class="col-md-10 offset-md-3">
+                @foreach ($user->posts as $post)
+                    @include('includes.post')
+                @endforeach
+            </div>
+        </div>
     </div>
 
 @endsection
