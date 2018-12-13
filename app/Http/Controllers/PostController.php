@@ -10,12 +10,10 @@ use App\User;
 
 class PostController extends Controller
 {
-    private $data = [];
-
     public function index()
     {
-        $data['posts'] = Post::orderBy('created_at', 'DESC')->get();
-        return view('pages.home', $data);
+        $posts = Post::orderBy('created_at', 'DESC')->get();
+        return view('pages.home', compact('posts'));
     }
 
     public function create()
@@ -24,7 +22,6 @@ class PostController extends Controller
             'text' => request('postText'),
             'user_id' => Auth::user()->id
         ]);
-
         return redirect()->back();
     }
 
@@ -42,9 +39,9 @@ class PostController extends Controller
         return $post->likes->count(); 
     }
 
-    public function destroy($id)
+    public function destroy($post)
     {
-        Post::destroy($id);
+        Post::destroy($post);
         return redirect()->back();
     }
 

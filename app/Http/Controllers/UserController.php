@@ -8,18 +8,16 @@ use App\Post;
 use App\User;
 
 class UserController extends Controller
-{
-    private $data = [];
-    
-    public function show($id)
+{   
+    public function show($user)
     {
-        $data['user'] = User::find($id);
-        return view('pages.profile', $data);
+        $user = User::with('posts')->where('id', $user)->first();
+        return view('pages.profile', compact('user'));
     }
 
     public function showUpdate()
     {
-        return User::where(['id' => request('id')])->get();
+        return User::find(request('id'));
     }
 
     public function edit(EditProfileValidation $request)
