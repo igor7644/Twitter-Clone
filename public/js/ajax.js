@@ -238,32 +238,28 @@ $(document).ready(function(){
             data: {
                 id
             },
-            success: function(data){
+            success: function(value){
                 
-                var text = '';
-
-                $.each(data, function(index, value){
-                    text += `
-                        <div class="alertMessage">
+                var text = `
+                    <div class="alertMessage">
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" id="name" value="${value['name']}">
                         </div>
-                        <form>
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" id="name" value="${value['name']}">
-                            </div>
-                            <div class="form-group">
-                               <label>Last Name</label>
-                                <input type="text" class="form-control" id="lastName" value="${value['last_name']}">
-                            </div>
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" class="form-control" id="username" value="${value['username']}">
-                                <input type="hidden" class="userId" data-id="${value['id']}">
-                            </div>
-                            <button type="submit" class="btn btn-primary updateProfile">Save changes</button>
-                        </form>
-                    `;
-                });
+                        <div class="form-group">
+                        <label>Last Name</label>
+                            <input type="text" class="form-control" id="lastName" value="${value['last_name']}">
+                        </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" id="username" value="${value['username']}">
+                            <input type="hidden" class="userId" data-id="${value['id']}">
+                        </div>
+                        <button type="submit" class="btn btn-primary updateProfile">Save changes</button>
+                    </form>
+                `;
 
                 $('.profileEdit').html(text);
             }
