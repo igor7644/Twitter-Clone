@@ -21,7 +21,7 @@ $(document).ready(function(){
                 $.each(data, function(index, value){
                     text += `
                     <div class="userAndComment">
-                        <p><a href="user/${value['user']['id']}" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a>&nbsp; <span>${value['comment']}</span></p>
+                        <p><a href="${BASE_URL}/user/${value['user']['id']}" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a>&nbsp; <span>${value['comment']}</span></p>
                     </div>
                     <a href="" class="replyLink" data-id="${value['id']}" data-postId="${value['post']['id']}">Reply</a>
                 
@@ -77,7 +77,7 @@ $(document).ready(function(){
                 $.each(data, function(index, value){
                     text += `
                     <div class="userAndComment">
-                        <p><a href="user/${value['user']['id']}" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a>&nbsp; <span>${value['comment']}</span></p>
+                        <p><a href="${BASE_URL}/user/${value['user']['id']}" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a>&nbsp; <span>${value['comment']}</span></p>
                     </div>
                     <a href="" class="replyLink" data-id="${value['id']}" data-postId="${value['post']['id']}">Reply</a>
 
@@ -149,7 +149,7 @@ $(document).ready(function(){
                     $.each(data, function(key, value){
                         text += `
                         <div class="userAndComment">
-                            <p><a href="user/${value['user']['id']}" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a>&nbsp; <span>${value['comment']}</span></p>
+                            <p><a href="${BASE_URL}/user/${value['user']['id']}" data-id="${value['id']}" class="usernameComment">${value['user']['username']}</a>&nbsp; <span>${value['comment']}</span></p>
                         </div>
                         <a href="" class="replyLink" data-id="${value['id']}" data-postId="${value['post']['id']}">Reply</a>
                         
