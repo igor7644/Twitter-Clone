@@ -306,6 +306,7 @@ $(document).ready(function(){
                         Profile updated!
                     </div>
                 `;
+                $('.postUsername').html(data['username']);
                 $('.pofileAjax').html(text);
                 $('.usernameAjax').html(text2);
                 $('.alertMessage').html(text3);
