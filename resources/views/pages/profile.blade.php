@@ -15,7 +15,22 @@
 
                 @if (auth()->user()->id == $user->id)
                     <button type="button" class="btn btn-primary editProfile" data-toggle="modal" data-target="#exampleModal" value="{{ $user->id }}">Edit Profile</button>
+                @else
+                    @if (auth()->user()->isFollowing->contains(request()->user))
+                        <form action="{{ asset('/user/'.$user->id.'/unfollow') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary followProfile">Unfollow</button>
+                        </form>
+                    @else
+                        <form action="{{ asset('/user/'.$user->id.'/follow') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary followProfile">Follow</button>
+                        </form>
+                    @endif
+                    
                 @endif
+                
+                
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
