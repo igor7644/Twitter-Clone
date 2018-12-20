@@ -14,6 +14,8 @@ Route::get('/user/verify/{token}', 'AuthController@verifyUser');
 Route::get('/user/{user}', 'UserController@show');
 Route::get('/user/{user}/show', 'UserController@showUpdate');
 Route::post('/user/{user}/edit', 'UserController@edit');
+Route::post('/user/{user}/follow', 'UserController@follow');
+Route::post('/user/{user}/unfollow', 'UserController@unfollow');
 
 //Posts
 Route::get('/home', 'PostController@index');
