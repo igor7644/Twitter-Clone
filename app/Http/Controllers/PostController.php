@@ -12,7 +12,9 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'DESC')->get();
+        $followedUsers = auth()->user()->isFollowing->pluck('id');
+        $followedUsers[] = auth()->user()->id;
+        $posts = Post::whereIn('user_id', $followedUsers)->orderBy('created_at', 'DESC')->get();
         return view('pages.home', compact('posts'));
     }
 
