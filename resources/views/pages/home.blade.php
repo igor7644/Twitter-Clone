@@ -13,8 +13,12 @@
             @foreach ($posts as $post)
                 @include('includes.post')
             @endforeach
-            
+
+            <div class="col-md-7 mr-auto">
+                <p>{{ $posts->links() }}</p>
+            </div>
         </div>
+        
     </div>
 
 @endsection
