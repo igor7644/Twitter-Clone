@@ -81,8 +81,8 @@
                         <tr align="center">
                             <td><b>{{ $user->posts->count() }}</b></td>
                             <td><b>{{ $user->likes->count() }}</b></td>
-                            <td><b>5</b></td>
-                            <td><b>5</b></td>
+                            <td><b>{{ $user->isFollowedBy->count() }}</b></td>
+                            <td><b>{{ $user->isFollowing->count() }}</b></td>
                         </tr>
                     </tbody>
                 </table>
