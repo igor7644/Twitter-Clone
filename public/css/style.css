@@ -147,6 +147,10 @@
 }
 .sidebar{
     background-color: white;
+    text-align: center;
+}
+.whoToFollow{
+    margin-top: 30px;
 }
 .sidebar2{
     background-color: white;
@@ -358,5 +362,19 @@
     color: white;
     background-color: #40B8DD;
     border: .5px solid #40B8DD;
+    box-shadow: none;
+}
+.unfollowProfile{
+    background: none;
+    color: #40B8DD;
+    width: 150px;
+    height: 38px;
+    border: .5px solid #40B8DD;
+    border-radius: 4px;
+}
+.unfollowProfile:hover, .unfollowProfile:active{
+    color: white;
+    background-color: #E0245E;
+    border: .5px solid #E0245E;
     box-shadow: none;
 }

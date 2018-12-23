@@ -19,7 +19,7 @@
                     @if (auth()->user()->isFollowing->contains(request()->user))
                         <form action="{{ asset('/user/'.$user->id.'/unfollow') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary followProfile">Unfollow</button>
+                            <button type="submit" class="btn btn-primary unfollowProfile">Unfollow</button>
                         </form>
                     @else
                         <form action="{{ asset('/user/'.$user->id.'/follow') }}" method="POST">
