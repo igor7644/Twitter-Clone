@@ -14,9 +14,6 @@
                 @include('includes.post')
             @endforeach
             
-            <div class="col-md-4 sidebar2">
-                <h3>sidebar 2</h3>
-            </div>
         </div>
     </div>
 
