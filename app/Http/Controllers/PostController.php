@@ -15,7 +15,8 @@ class PostController extends Controller
         $followedUsers = auth()->user()->isFollowing->pluck('id');
         $followedUsers[] = auth()->user()->id;
         $posts = Post::whereIn('user_id', $followedUsers)->orderBy('created_at', 'DESC')->paginate(4);
-        return view('pages.home', compact('posts'));
+        $users = User::orderBy('created_at', 'DESC')->whereNotIn('id', $followedUsers)->limit(5)->get();
+        return view('pages.home', compact('posts', 'users'));
     }
 
     public function create()
