@@ -14,17 +14,17 @@
                 <p>Joined {{ $user->created_at->format('F Y') }}</p>
 
                 @if (auth()->user()->id == $user->id)
-                    <button type="button" class="btn btn-primary editProfile" data-toggle="modal" data-target="#exampleModal" value="{{ $user->id }}">Edit Profile</button>
+                    <button type="button" class="btn btn-primary editProfile" data-toggle="modal" data-target="#exampleModal" value="{{ $user->id }}"><i class="fas fa-user-edit"></i>&nbsp Edit Profile</button>
                 @else
                     @if (auth()->user()->isFollowing->contains(request()->user))
                         <form action="{{ asset('/user/'.$user->id.'/unfollow') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary unfollowProfile">Unfollow</button>
+                            <button type="submit" class="btn btn-primary unfollowProfile"><i class="fas fa-user-minus"></i>&nbsp Unfollow</button>
                         </form>
                     @else
                         <form action="{{ asset('/user/'.$user->id.'/follow') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary followProfile">Follow</button>
+                            <button type="submit" class="btn btn-primary followProfile"><i class="fas fa-user-plus"></i>&nbsp Follow</button>
                         </form>
                     @endif
                     
