@@ -10,9 +10,8 @@ use App\User;
 
 class UserController extends Controller
 {   
-    public function show($user)
+    public function show(User $user)
     {
-        $user = User::with('posts')->where('id', $user)->first();
         return view('pages.profile', compact('user'));
     }
 
