@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content" id="thread" class="thread">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><p class="post-author"><a href="{{ asset('/user/'.$post->user->id) }}" class="usernamePost">{{ $post->user->username }}</a></p></h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><p class="post-author"><a href="{{ asset('/user/'.$post->user->username) }}" class="usernamePost">{{ $post->user->username }}</a></p></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -1,6 +1,6 @@
 <div class="col-md-7 mr-auto posts">
     <div class="row insidePost">
-            <p class="post-author"><a href="{{ asset('/user/'.$post->user->id) }}" class="usernamePost"><span class="postUsername">{{ $post->user->username }}</span></a><span class="hours"> &nbsp {{ Carbon\Carbon::parse($post->created_at)->diffForHumans()}} </span></p>
+            <p class="post-author"><a href="{{ asset('/user/'.$post->user->username) }}" class="usernamePost"><span class="postUsername">{{ $post->user->username }}</span></a><span class="hours"> &nbsp {{ Carbon\Carbon::parse($post->created_at)->diffForHumans()}} </span></p>
             @if(auth()->user()->id == $post->user->id)
             <div class="dropdown ml-auto delete-dd">
                     <a class="dropdown-toggle fas fa-angle-down delete-dropdown"  data-toggle="dropdown"></a>
