@@ -5,7 +5,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 welcome">
-                <h1>WELCOME!</h1>
+                <h1 class="welcomeText"><i class="fas fa-search"></i> &nbsp Follow your interests.</h1>
+                <h1 class="welcomeText"><i class="fas fa-users"></i>&nbsp Hear what people are talking about.</h1>
+                <h1 class="welcomeText"><i class="far fa-comment"></i> &nbsp Join the conversation.</h1>
             </div>
             <div class="col-md-6">
                 <form action="{{ route('signIn') }}" method="POST" class="form-inline signin">
