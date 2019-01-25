@@ -12,6 +12,9 @@
         </form>
     </div>
     <div class="col-md-4 sidebar">
-        <h3>Who to Follow</h3>
+        <h3 class="whoToFollow">Who to Follow</h3>
+        @foreach ($users as $u)
+            {{ $u->name }}
+        @endforeach
     </div>
 </div>
