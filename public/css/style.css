@@ -3,8 +3,13 @@
     height: 100vh;
     background-color: #40B8DD;
 }
-.welcome h1{
-    text-align: center;
+.welcomeText{
+    padding: 20px;
+    position: relative;
+    top: 33%;
+    left: 28%;
+    font-size: 25px;
+    color: white;
 }
 .signin{
     justify-content: center; /* align horizontal */
