@@ -19,6 +19,11 @@
     padding-top: 100px;
     text-align: center;
 }
+.joinUs{
+    padding-top: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
 .signup h3{
     display: inline;
 }
@@ -27,6 +32,9 @@
 }
 .form-control:focus{
     border: 1px solid #40B8DD;
+}
+.ph:focus::placeholder{
+    opacity: 0.6;
 }
 .loginBtn{
     background: none;
@@ -47,8 +55,23 @@
     width: 120px;
     border: 2px solid #40B8DD;
     border-radius: 20px;
+    bottom: 20px;
+    position: relative;
 }
 .signupBtn:hover, .signupBtn:active{
+    color: white;
+    background-color: #208fb1;
+    border: 2px solid #208fb1;
+    box-shadow: none;
+}
+.signupBtn2{
+    background: #40B8DD;
+    color: white;
+    width: 120px;
+    border: 2px solid #40B8DD;
+    border-radius: 20px;
+}
+.signupBtn2:hover, .signupBtn2:active{
     color: white;
     background-color: #208fb1;
     border: 2px solid #208fb1;
@@ -123,6 +146,13 @@
     width:60%;
     margin: auto;
     padding-top: 20px;
+}
+.textarea-insert::placeholder{
+    color: #40B8DD;
+}
+.textarea-insert:focus::placeholder{
+    color: grey;
+    opacity: 0.6;
 }
 .main-insert-blue{
     background-color: #D7EEFB;
