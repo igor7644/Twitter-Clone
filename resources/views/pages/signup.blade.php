@@ -39,7 +39,7 @@
                         <label>Confirm Password</label>
                         <input type="password" class="form-control" name="password_confirmation">
                     </div>
-                    <button type="submit" class="btn signupBtn">Sign up</button>
+                    <button type="submit" class="btn signupBtn2">Sign up</button>
                 </form><br>
 
                 @if (count($errors) > 0)
