@@ -13,10 +13,10 @@
                 <form action="{{ route('signIn') }}" method="POST" class="form-inline signin">
                     @csrf
                     <div class="form-group">
-                        <input type="text" class="form-control mr-sm-2" placeholder="E-mail or Username" name="username">
+                        <input type="text" class="form-control mr-sm-2 ph" placeholder="E-mail or Username" name="username">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control mr-sm-2" placeholder="Password" name="password">
+                        <input type="password" class="form-control mr-sm-2 ph" placeholder="Password" name="password">
                     </div>
                     <button type="submit" class="btn loginBtn">Log in</button>
                 </form>
@@ -36,7 +36,9 @@
                         
                     </div>
                 <div class="signup">
-                    <h3>Don't have account?</h3> &nbsp;&nbsp;&nbsp; <a class="btn signupBtn defaultButton" href="{{ route('signUp') }}" role="button">Sign up</a>
+                    <h2>See what’s happening in <br> the world right now!</h2><br>
+                    <p class="joinUs">Join Social Blog today.</p><br>
+                    <a class="btn signupBtn defaultButton" href="{{ route('signUp') }}" role="button">Sign up</a>
                 </div>
             </div>
         </div>
