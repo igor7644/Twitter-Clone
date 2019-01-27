@@ -31,8 +31,7 @@
                             {{ session('message') }}
                         @endempty
                         @empty(!session('errorMessage'))
-                            {{ session('errorMessage') }} <br>
-                            <a href="#">Forgot password?</a>
+                            {{ session('errorMessage') }}
                         @endempty
                         
                     </div>
