@@ -48,15 +48,15 @@
                             <form>
                                 <div class="form-group">
                                   <label>Name</label>
-                                  <input type="text" class="form-control" id="" placeholder="">
+                                  <input type="text" class="form-control editInput" id="" placeholder="">
                                 </div>
                                 <div class="form-group">
                                   <label>Last Name</label>
-                                  <input type="text" class="form-control" id="" placeholder="">
+                                  <input type="text" class="form-control editInput" id="" placeholder="">
                                 </div>
                                 <div class="form-group">
                                   <label>Username</label>
-                                  <input type="text" class="form-control" id="" placeholder="">
+                                  <input type="text" class="form-control editInput" id="" placeholder="">
                                   <input type="hidden" data-id="{{ $user->id }}">
                                 </div>
                                 <button type="submit" class="btn btn-primary updateProfile">Save changes</button>
@@ -88,7 +88,7 @@
                 </table>
             </div>
         </div>
-        <div class="row profilePosts" style="background-color: white">
+        <div class="row profilePosts">
             <div class="col-md-10 offset-md-3">
                 @foreach ($user->posts as $post)
                     @include('includes.post')
