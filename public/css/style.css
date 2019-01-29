@@ -99,6 +99,29 @@
 }
 
 /** Home page */
+.navlink{
+    color: #40B8DD;
+    position: relative;
+}
+.navp{
+    padding-top: 3px;
+    font-weight: 600;
+    display: inline;
+    margin-left: 20px;
+}
+.navlink:hover{
+    color: #208FB1;
+    text-decoration: none;
+}
+.navlink:hover::after{
+  position: absolute;
+  content: '';
+  border-bottom: 2px solid #208FB1;
+  width: 123%;
+  transform: translateX(-50%);
+  bottom: -14px;
+  left: 51%;
+}
 .profile-dd{
     background: none;
     color: #40B8DD;
