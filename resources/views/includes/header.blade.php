@@ -1,6 +1,7 @@
 <div class="row header">
-    <div class="col-md-8 ml-auto">
-        <p><a href="{{ asset('/home') }}"><i class="fas fa-home"></i> Home</a></p>
+    <div class="col-md-8 ml-auto nav">
+        <p class="navp"><a href="{{ asset('/home') }}" class="navlink"><i class="fas fa-home"></i> Home</a></p>
+        <p class="navp"><a href="" class="navlink"><i class="fas fa-bell"></i> Notifications</a></p>
     </div>
     <div class="col-md-2 ml-auto">
         <div class="ddBtn usernameAjax">
