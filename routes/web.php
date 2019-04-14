@@ -1,5 +1,9 @@
 <?php
 
+//Notification
+Route::get('/notifications', 'NotificationController@index');
+Route::post('/markasread', 'NotificationController@markAsRead');
+
 //Auth
 Route::get('/welcome', 'AuthController@index');
 Route::post('/signin', 'AuthController@signIn')->name('signIn');
@@ -28,5 +32,3 @@ Route::post('/comments/createReply', 'CommentController@createReply');
 Route::get('/comments', 'CommentController@show');
 Route::post('/likes/create', 'PostController@like');
 Route::post('/likes/destroy', 'PostController@unlike');
-
-
