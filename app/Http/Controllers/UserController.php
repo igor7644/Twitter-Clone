@@ -7,6 +7,7 @@ use App\Http\Requests\EditProfileValidation;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\User;
+use App\Notifications\NewFollower;
 
 class UserController extends Controller
 {   
@@ -33,7 +34,9 @@ class UserController extends Controller
 
     public function follow($user)
     {
+        $userNotification = User::findOrFail($user);
         Auth::user()->isFollowing()->attach($user);
+        $userNotification->notify(new NewFollower(Auth::user()));
         return redirect()->back();
     }
 
