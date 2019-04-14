@@ -457,3 +457,35 @@
     border: .5px solid #E0245E;
     box-shadow: none;
 }
+
+/* Notifications */
+.notifications{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.notifications h3{
+    font-size: 30px;
+}
+.notificationCard{
+    margin-top: 50px;
+}
+.readNotification{
+    background-color: #EDF1F4;
+    opacity: .7;
+}
+.markAsRead{
+    background: none;
+    color: #40B8DD;
+    width: 150px;
+    height: 38px;
+    border: .5px solid #40B8DD;
+    border-radius: 4px;
+}
+.markAsRead:hover, .markAsRead:active{
+    color: white;
+    background-color: #40B8DD;
+    border: .5px solid #40B8DD;
+    box-shadow: none;
+}
