@@ -1,7 +1,16 @@
 <div class="row header">
     <div class="col-md-8 ml-auto nav">
         <p class="navp"><a href="{{ asset('/home') }}" class="navlink"><i class="fas fa-home"></i> Home</a></p>
-        <p class="navp"><a href="" class="navlink"><i class="fas fa-bell"></i> Notifications</a></p>
+        <p class="navp">
+            <a href="{{ asset('/notifications') }}" class="navlink">
+                <i class="fas fa-bell"></i> Notifications&nbsp;
+                @if(Auth::user()->unreadnotifications->count())
+                    <span class="badge badge-dark">
+                        {{ Auth::user()->unreadnotifications->count() }}
+                    </span>
+                @endif
+            </a>
+        </p>
     </div>
     <div class="col-md-2 ml-auto">
         <div class="ddBtn usernameAjax">
