@@ -8,10 +8,12 @@
         <div class="row">
             <div class="col-md-6 offset-md-3 notifications">
                 <h3><b>Notifications</b></h3><br>
-                <form action="{{ asset('/markasread') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-primary markAsRead">Mark All As Read</button>
-                </form>
+                @if(Auth::user()->unreadnotifications->count())
+                    <form action="{{ asset('/markasread') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-primary markAsRead">Mark All As Read</button>
+                    </form>
+                @endif
                 @foreach (Auth::user()->unReadNotifications as $notification)
                     <div class="card notificationCard">
                         <i class="far fa-bell" style="margin-top:20px;"></i>
