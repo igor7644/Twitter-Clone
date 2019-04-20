@@ -14,7 +14,7 @@
     <div class="col-md-4 sidebar">
         <h3 class="whoToFollow">Who to Follow</h3>
         @foreach ($users as $u)
-            {{ $u->name }}
+            <p><a href="{{ asset('/user/'.$u->username) }}">{{ $u->name }}</a></p>
         @endforeach
     </div>
 </div>
