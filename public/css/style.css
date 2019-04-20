@@ -122,6 +122,12 @@
   bottom: -14px;
   left: 51%;
 }
+.sidebar a{
+    cursor: pointer;
+    color: #40B8DD;
+    text-decoration: none;
+    font-size: 20px;
+}
 .profile-dd{
     background: none;
     color: #40B8DD;
@@ -225,6 +231,9 @@
 }
 .post-author{
     font-weight: bold;
+}
+.post-author a{
+    text-decoration: none;
 }
 .hours{
     font-weight: normal;
